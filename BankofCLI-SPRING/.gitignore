@@ -34,3 +34,6 @@ build/
 
 # Runtime log
 /logback.log
+
+# Developer-only Spring configuration and secrets
+/application-local.properties

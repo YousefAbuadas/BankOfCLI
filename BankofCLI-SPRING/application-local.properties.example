@@ -1,0 +1,8 @@
+# Copy this file to application-local.properties. The latter is ignored by Git.
+spring.datasource.url=jdbc:postgresql://localhost:5432/bankofcli
+spring.datasource.username=postgres
+spring.datasource.password=
+
+# Generate a private signing key with: openssl rand -base64 32
+jwt.secret=REPLACE_WITH_A_PRIVATE_BASE64_SECRET
+jwt.expiration-ms=28800000
