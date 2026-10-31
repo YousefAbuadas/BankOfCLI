@@ -1,7 +1,6 @@
 package com.example.bankofcli.api.controller;
 
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -16,7 +15,6 @@ import com.example.bankofcli.application.contract.BankContracts.RegisterRequest;
 
 @RestController
 @RequestMapping("/auth")
-@CrossOrigin(origins = {"http://localhost:5173"}, allowedHeaders = "*")
 public class AuthController {
 	
 	private final JwtUtil jwt;

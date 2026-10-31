@@ -1,5 +1,6 @@
-const API_BASE_URL =
-  import.meta.env.VITE_API_BASE_URL || 'http://localhost:8080'
+// Production serves the frontend and API from the same origin. Vite proxies
+// these relative paths to Spring Boot during local development.
+const API_BASE_URL = ''
 
 export function getAuthToken(): string | null {
   return localStorage.getItem('bankAuthToken')

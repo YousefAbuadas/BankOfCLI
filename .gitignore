@@ -11,3 +11,12 @@
 .metals/metals.log
 .metals/metals.mv.db
 .metals/metals.lock.db
+
+/application-local.properties
+/application-env.properties
+/logback.log
+/backend/logback.log
+/frontend/dist/
+/backend/target/
+/release/
+/.bankofcli-release.*/

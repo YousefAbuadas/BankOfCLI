@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,7 +20,6 @@ import com.example.bankofcli.application.contract.BankContracts.AccountResponse;
 
 @Controller
 @RequestMapping("/user")
-@CrossOrigin(origins = {"http://localhost:5173"}, allowedHeaders = "*")
 public class AccountController {
 	
 	private final JwtUtil jwt;

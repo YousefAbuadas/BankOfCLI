@@ -1,4 +1,4 @@
-# Copy this file to application-local.properties. The latter is ignored by Git.
+# Copy this file to application-env.properties. The latter is ignored by Git.
 spring.datasource.url=jdbc:postgresql://localhost:5432/bankofcli
 spring.datasource.username=postgres
 spring.datasource.password=

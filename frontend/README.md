@@ -7,13 +7,13 @@ communication are easy to find.
 ## Development
 
 ```sh
-npm install
+npm ci
 npm run dev
 ```
 
-The backend defaults to `http://localhost:8080`. Set `VITE_API_BASE_URL` to use
-another backend URL. Authentication and banking endpoints are called through
-`src/services/`.
+Vite proxies `/auth`, `/user`, and `/transaction` requests to the backend at
+`http://localhost:8080`. Authentication and banking endpoints are called
+through `src/services/`.
 
 ```sh
 npm run build

@@ -37,3 +37,4 @@ build/
 
 # Developer-only Spring configuration and secrets
 /application-local.properties
+/application-env.properties

@@ -7,4 +7,11 @@ export default defineConfig({
   resolve: {
     dedupe: ['react', 'react-dom'],
   },
+  server: {
+    proxy: {
+      '/auth': 'http://localhost:8080',
+      '/user': 'http://localhost:8080',
+      '/transaction': 'http://localhost:8080',
+    },
+  },
 })

@@ -4,6 +4,7 @@ import com.example.bankofcli.infrastructure.security.jwt.JwtFilter;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
@@ -53,10 +54,18 @@ public class SecurityConfig {
                 )
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll() // allow preflight
+                        .requestMatchers("/", "/index.html", "/assets/**", "/favicon.svg").permitAll()
+                        .requestMatchers("/actuator/health").permitAll()
                         .requestMatchers("/auth/**").permitAll()  // login and register are public
+                        .requestMatchers(HttpMethod.GET, "/user/getAccount", "/user/accounts").authenticated()
+                        .requestMatchers(HttpMethod.PUT,
+                                "/transaction/deposit/*", "/transaction/withdraw/*", "/transaction/transfer/*")
+                                .authenticated()
+                        .requestMatchers(HttpMethod.GET, "/transaction/transactions/*").authenticated()
                         .requestMatchers("/error").permitAll()    // so real errors aren't hidden behind a 401
-                        // .requestMatchers("/admin/**").hasRole("ADMIN") // roles are "USER" / "ADMIN"
-                        .anyRequest().authenticated()   // everything else requires a valid JWT
+                        // Keep unknown paths public to Spring MVC so they retain their normal 404/405 responses.
+                        // Keep banking matchers in sync with controllers; services also require the current user.
+                        .anyRequest().permitAll()
                 )
                 .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
 
@@ -69,11 +78,12 @@ public class SecurityConfig {
         response.getWriter().write("{\"error\":\"" + message + "\"}");
     }
 
-    // Configures CORS to allow requests from our React frontend (Vite dev server)
+    // CORS is centralized here; production supplies the exact CloudFront origin.
     @Bean
-    public CorsConfigurationSource corsConfigurationSource() {
+    public CorsConfigurationSource corsConfigurationSource(
+            @Value("${app.allowed-origin}") String allowedOrigin) {
         CorsConfiguration config = new CorsConfiguration();
-        config.setAllowedOrigins(List.of("http://localhost:5173"));
+        config.setAllowedOrigins(List.of(allowedOrigin));
         config.setAllowedMethods(List.of("GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"));
         config.setAllowedHeaders(List.of("Authorization", "Content-Type"));
 

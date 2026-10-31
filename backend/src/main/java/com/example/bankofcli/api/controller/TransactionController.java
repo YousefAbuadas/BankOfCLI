@@ -5,7 +5,6 @@ import java.util.List;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,7 +18,6 @@ import com.example.bankofcli.application.contract.BankContracts.TransactionRespo
 
 @Controller
 @RequestMapping("/transaction")
-@CrossOrigin(origins = {"http://localhost:5173"}, allowedHeaders = "*")
 public class TransactionController {
 
 	private final JwtUtil jwt;

@@ -21,7 +21,8 @@ public class LoggingAspect {
 
     @Before("within(com.example.bankofcli.application.service.*)")
     public void logServiceMethods(JoinPoint jp){
-        logger.info(jp.getTarget() + " is calling " + jp.getSignature().getName());
+        logger.info("Service operation started: {}.{}",
+                jp.getTarget().getClass().getSimpleName(), jp.getSignature().getName());
     }
 
 
@@ -30,15 +31,18 @@ public class LoggingAspect {
      //A pointcut is an exact location where advices WILL BE executed
      "After the execution of any method in any service class that has any args inside the service layer, generate a log"
      */
-    @AfterReturning(pointcut="execution(* com.example.bankofcli.application.service.*.*(..))", returning="result")
-    public void logSuccessfulServiceMethods(JoinPoint jp, Object result){
-        logger.info(jp.getSignature().getName() + " successfully returned: " + result);
+    @AfterReturning("execution(* com.example.bankofcli.application.service.*.*(..))")
+    public void logSuccessfulServiceMethods(JoinPoint jp){
+        logger.info("Service operation completed: {}.{}",
+                jp.getTarget().getClass().getSimpleName(), jp.getSignature().getName());
     }
 
 
     //Logging Exception throws with @AfterThrowing
     @AfterThrowing(pointcut="execution(* com.example.bankofcli.application.service.*.*(..))", throwing="exc")
     public void logServiceExceptions(JoinPoint jp, Throwable exc){
-        logger.error(jp.getSignature().getName() + " threw: " + exc);
+        logger.warn("Service operation failed: {}.{} ({})",
+                jp.getTarget().getClass().getSimpleName(), jp.getSignature().getName(),
+                exc.getClass().getSimpleName());
     }
 }
