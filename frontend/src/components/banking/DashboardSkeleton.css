@@ -1,0 +1,38 @@
+.skeleton {
+  background: #e8edef;
+  border-radius: 8px;
+  animation: skeleton-pulse 1.1s ease-in-out infinite alternate;
+}
+.skeleton-heading {
+  width: 270px;
+  height: 65px;
+  margin-bottom: 30px;
+}
+.skeleton-grid {
+  display: grid;
+  grid-template-columns: 1.18fr 1fr 1fr;
+  gap: 18px;
+}
+.skeleton-card {
+  height: 205px;
+}
+.skeleton-table {
+  height: 330px;
+  margin-top: 25px;
+}
+@keyframes skeleton-pulse {
+  to {
+    opacity: 0.45;
+  }
+}
+@media (max-width: 720px) {
+  .skeleton-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .skeleton-card:first-child {
+    grid-column: 1 / -1;
+  }
+  .skeleton-card {
+    height: 170px;
+  }
+}

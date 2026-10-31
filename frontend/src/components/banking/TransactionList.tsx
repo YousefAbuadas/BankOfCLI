@@ -1,7 +1,8 @@
-import type { Account, Transaction } from '../models/banking'
-import { formatDate, formatMoney } from '../utils/format'
-import { Icon } from './Icon'
-import { EmptyState } from './ui'
+import type { Account, Transaction } from '../../types/domain'
+import { formatDate, formatMoney } from '../../utils/format'
+import { Icon } from '../ui/Icon'
+import { EmptyState } from '../ui/EmptyState'
+import './TransactionList.css'
 
 export function TransactionList({
   transactions,

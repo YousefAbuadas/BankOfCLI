@@ -1,0 +1,37 @@
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--ink);
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: -0.4px;
+  white-space: nowrap;
+}
+.brand-mark {
+  width: 43px;
+  height: 43px;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  background: var(--green);
+  color: white;
+}
+.brand-caption {
+  display: block;
+  margin-top: 4px;
+  font-size: 0.625rem;
+  letter-spacing: 1.9px;
+  font-weight: 500;
+  color: var(--muted);
+}
+.brand-light {
+  color: #fff;
+}
+.brand-light .brand-caption {
+  color: #a8bec9;
+}
+.brand-light .brand-mark {
+  background: #2c514d;
+  color: #ccebdd;
+}

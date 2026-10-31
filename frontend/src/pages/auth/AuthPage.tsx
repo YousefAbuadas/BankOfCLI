@@ -1,10 +1,13 @@
 import { useState } from 'react'
 import type { FormEvent } from 'react'
-import type { User } from '../models/banking'
-import { authService } from '../services/authService'
-import { Brand, Button, Input } from '../components/ui'
-import { Icon } from '../components/Icon'
-import { handleTabNavigation } from '../utils/tabs'
+import type { User } from '../../types/domain'
+import { authService } from '../../services/authService'
+import { Brand } from '../../components/branding/Brand'
+import { Button } from '../../components/ui/Button'
+import { Input } from '../../components/ui/Input'
+import { Icon } from '../../components/ui/Icon'
+import { handleTabNavigation } from '../../utils/tabs'
+import './AuthPage.css'
 
 interface AuthPageProps {
   onLogin: (user: User) => void
@@ -91,7 +94,7 @@ export function AuthPage({ onLogin, notify }: AuthPageProps) {
 
         onLogin(response.user)
       } else {
-      
+
         await authService.register({
           firstName: values.firstName.trim(),
           lastName: values.lastName.trim(),

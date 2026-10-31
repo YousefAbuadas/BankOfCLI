@@ -1,15 +1,16 @@
 import { useState } from 'react'
 import type { FormEvent } from 'react'
-import type {
-  Account,
-  TransactionResponse,
-  TransactionType,
-} from '../models/banking'
-import { bankService } from '../services/bankService'
-import { Button, Input, Select } from '../components/ui'
-import { Icon } from '../components/Icon'
-import { handleTabNavigation } from '../utils/tabs'
-import { formatMoney, parseAmount } from '../utils/format'
+import type { Account, TransactionType } from '../../types/domain'
+import type { TransactionResponse } from '../../types/banking'
+import { bankService } from '../../services/bankService'
+import { Button } from '../../components/ui/Button'
+import { Input } from '../../components/ui/Input'
+import { Select } from '../../components/ui/Select'
+import { Icon } from '../../components/ui/Icon'
+import { handleTabNavigation } from '../../utils/tabs'
+import { formatMoney } from '../../utils/format'
+import { parseAmount } from '../../utils/money'
+import './TransactionPage.css'
 
 const actions: {
   type: TransactionType

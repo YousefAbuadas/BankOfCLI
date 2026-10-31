@@ -1,5 +1,6 @@
-import seed from '../data/mock-bank.json'
-import type { Account, ApiError, Transaction, User } from '../models/banking'
+import seed from './fixtures/mock-bank.json'
+import type { Account, Transaction, User } from '../types/domain'
+import type { ApiError } from '../types/api'
 
 interface MockSeed {
   user: User

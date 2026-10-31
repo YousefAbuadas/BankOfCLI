@@ -1,0 +1,324 @@
+.balances-grid {
+  display: grid;
+  grid-template-columns: 1.18fr 1fr 1fr;
+  gap: 18px;
+}
+.total-balance-card {
+  min-width: 0;
+  position: relative;
+  overflow: hidden;
+  border-radius: 9px;
+  background: #183a38;
+  color: white;
+  padding: 26px 25px;
+  min-height: 204px;
+}
+.balance-card-top {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+.total-balance-card .balance-card-top > span {
+  font-size: 0.875rem;
+  color: #cce0d9;
+}
+.total-balance-card .balance-card-top svg {
+  color: #aacac0;
+}
+.balance-value {
+  position: relative;
+  z-index: 1;
+  font-size: clamp(1.8rem, 2.5vw, 2.5rem);
+  font-weight: 500;
+  letter-spacing: -1px;
+  margin-top: 26px;
+  font-variant-numeric: tabular-nums;
+}
+.total-balance-footer {
+  position: relative;
+  z-index: 1;
+  margin-top: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.75rem;
+  color: #b6d1c6;
+  gap: 6px;
+}
+.currency-label {
+  border: 1px solid #4d7368;
+  padding: 3px 6px;
+  border-radius: 4px;
+  font-size: 0.625rem;
+  letter-spacing: 1px;
+}
+.balance-decoration {
+  position: absolute;
+  width: 160px;
+  height: 160px;
+  border: 1px solid #36594e;
+  border-radius: 32px;
+  transform: rotate(35deg);
+  right: -90px;
+  top: 10px;
+}
+.balance-decoration::after {
+  content: '';
+  position: absolute;
+  inset: 12px;
+  border: 1px solid #36594e;
+  border-radius: 23px;
+}
+.account-card {
+  display: block;
+  min-width: 0;
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  background: white;
+  padding: 21px 23px 17px;
+  text-align: left;
+  transition:
+    border-color 0.15s,
+    box-shadow 0.15s;
+}
+.account-card:hover {
+  border-color: #93bba9;
+  box-shadow: 0 3px 12px #19342c0c;
+}
+.account-icon {
+  display: grid;
+  place-items: center;
+  width: 33px;
+  height: 33px;
+  background: #edf4f0;
+  color: #37775e;
+  border-radius: 7px;
+}
+.account-number {
+  font-size: 0.75rem;
+  color: #71818b;
+  letter-spacing: 0.7px;
+}
+.account-name {
+  font-size: 0.875rem;
+  color: #586c78;
+  margin-top: 16px;
+}
+.account-balance {
+  font-size: clamp(1.5rem, 2vw, 1.875rem);
+  letter-spacing: -0.6px;
+  font-weight: 600;
+  margin-top: 7px;
+  font-variant-numeric: tabular-nums;
+}
+.account-card-footer {
+  font-size: 0.75rem;
+  color: #71818b;
+  margin-top: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.account-card-footer svg {
+  color: #799289;
+}
+.quick-actions {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 5px 0;
+  margin-top: 22px;
+  margin-bottom: 28px;
+}
+.quick-actions > button {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 19px 23px;
+  border: 0;
+  background: transparent;
+  text-align: left;
+  min-width: 0;
+  transition: background 0.15s;
+}
+.quick-actions > button:hover {
+  background: #f0f6f3;
+}
+.quick-actions > button + button {
+  border-left: 1px solid var(--border);
+}
+.quick-action-icon {
+  color: var(--green);
+  width: 37px;
+  height: 37px;
+  display: grid;
+  place-items: center;
+  border-radius: 8px;
+  background: #f0f6f2;
+  flex-shrink: 0;
+}
+.quick-actions strong {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+.quick-actions > button > span > span {
+  display: block;
+  margin-top: 5px;
+  font-size: 0.75rem;
+  color: #71818b;
+}
+.quick-actions > button > svg {
+  margin-left: auto;
+  color: #889aa2;
+}
+.overview-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 23px;
+  color: #74848e;
+  font-size: 0.75rem;
+}
+.overview-footer > span:first-child {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+.overview-footer svg {
+  color: #8d9d9e;
+}
+@media (max-width: 1200px) {
+  .balances-grid {
+    gap: 14px;
+  }
+  .total-balance-card {
+    padding: 23px 20px;
+  }
+  .account-card {
+    padding-inline: 18px;
+  }
+  .quick-actions > button {
+    padding: 18px 15px;
+    gap: 10px;
+  }
+  .quick-actions > button > svg {
+    display: none;
+  }
+}
+@media (max-width: 980px) {
+  .balances-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .total-balance-card {
+    grid-column: 1 / -1;
+    min-height: 177px;
+  }
+  .balance-value {
+    font-size: 2.2rem;
+    margin-top: 19px;
+  }
+  .total-balance-footer {
+    margin-top: 16px;
+  }
+  .quick-actions strong {
+    font-size: 0.8125rem;
+  }
+  .quick-actions > button > span > span {
+    display: none;
+  }
+  .quick-action-icon {
+    width: 30px;
+    background: transparent;
+  }
+  .quick-actions > button {
+    gap: 7px;
+    padding-inline: 10px;
+  }
+  .overview-footer > span:last-child {
+    display: none;
+  }
+}
+@media (max-width: 720px) {
+  .total-balance-card {
+    padding: 22px;
+  }
+  .balance-value {
+    font-size: 2.375rem;
+  }
+  .balances-grid {
+    gap: 12px;
+  }
+  .account-card {
+    padding: 16px 16px 14px;
+  }
+  .account-name {
+    font-size: 0.8125rem;
+  }
+  .account-balance {
+    font-size: 1.375rem;
+    letter-spacing: -0.4px;
+  }
+  .account-number {
+    font-size: 0.6875rem;
+  }
+  .account-icon {
+    width: 29px;
+    height: 29px;
+  }
+  .account-icon svg {
+    width: 18px;
+  }
+  .quick-actions {
+    margin-top: 18px;
+    margin-bottom: 22px;
+  }
+  .quick-actions > button {
+    flex-direction: column;
+    padding: 12px 7px;
+    text-align: center;
+    gap: 7px;
+  }
+  .quick-actions strong {
+    font-size: 0.75rem;
+  }
+  .quick-action-icon {
+    width: 34px;
+    height: 34px;
+    background: #f0f6f2;
+  }
+  .overview-footer {
+    font-size: 0.75rem;
+    line-height: 1.6;
+    margin-top: 20px;
+  }
+}
+@media (max-width: 370px) {
+  .account-card {
+    padding-inline: 12px;
+  }
+  .account-name {
+    font-size: 0.75rem;
+  }
+  .account-balance {
+    font-size: 1.2rem;
+  }
+}
+.balance-value,
+.account-balance {
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 720px) {
+  .account-balance {
+    font-size: clamp(1rem, 4.9vw, 1.3125rem);
+    letter-spacing: -0.5px;
+  }
+}

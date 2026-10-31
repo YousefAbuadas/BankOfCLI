@@ -1,8 +1,9 @@
 import { useState } from 'react'
-import type { DashboardResponse } from '../models/banking'
-import { Select } from '../components/ui'
-import { Icon } from '../components/Icon'
-import { TransactionList } from '../components/TransactionList'
+import type { DashboardResponse } from '../../types/banking'
+import { Select } from '../../components/ui/Select'
+import { Icon } from '../../components/ui/Icon'
+import { TransactionList } from '../../components/banking/TransactionList'
+import './ActivityPage.css'
 
 export function ActivityPage({
   dashboard,

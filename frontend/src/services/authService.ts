@@ -3,8 +3,8 @@ import type {
   AuthService,
   LoginRequest,
   RegistrationRequest,
-  User,
-} from '../models/banking'
+} from '../types/auth'
+import type { User } from '../types/domain'
 import {
   apiRequest,
   clearAuthToken,

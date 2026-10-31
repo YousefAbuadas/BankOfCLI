@@ -1,8 +1,10 @@
-import type { DashboardResponse, TransactionType } from '../models/banking'
-import { Icon } from '../components/Icon'
-import { Button } from '../components/ui'
-import { TransactionList } from '../components/TransactionList'
-import { formatMoney } from '../utils/format'
+import type { DashboardResponse } from '../../types/banking'
+import type { TransactionType } from '../../types/domain'
+import { Icon } from '../../components/ui/Icon'
+import { Button } from '../../components/ui/Button'
+import { TransactionList } from '../../components/banking/TransactionList'
+import { formatMoney } from '../../utils/format'
+import './OverviewPage.css'
 
 interface OverviewProps {
   dashboard: DashboardResponse

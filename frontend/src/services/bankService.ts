@@ -1,13 +1,10 @@
-
-
 import type {
   Account,
-  DashboardResponse,
   Transaction,
-  TransactionResponse,
   TransactionType,
   User,
-} from '../models/banking'
+} from '../types/domain'
+import type { DashboardResponse, TransactionResponse } from '../types/banking'
 import { apiRequest } from './apiClient'
 
 interface BackendAccount {
