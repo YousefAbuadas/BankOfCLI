@@ -1,0 +1,56 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: Application and database security groups for the BankOfCLI deployment.
+
+Parameters:
+  VpcId:
+    Type: AWS::EC2::VPC::Id
+    Description: Select the default VPC in us-east-2 used by Beanstalk and RDS.
+
+  CloudFrontOriginFacingPrefixListId:
+    Type: String
+    Description: ID of com.amazonaws.global.cloudfront.origin-facing in us-east-2.
+    AllowedPattern: '^pl-[0-9a-f]+$'
+    ConstraintDescription: Enter a managed prefix list ID beginning with pl-.
+
+Resources:
+  ApplicationSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupName: bankofcli-app-sg
+      GroupDescription: Allow HTTP from CloudFront origin-facing servers.
+      VpcId: !Ref VpcId
+      SecurityGroupIngress:
+        - Description: HTTP from CloudFront origin-facing servers.
+          IpProtocol: tcp
+          FromPort: 80
+          ToPort: 80
+          SourcePrefixListId: !Ref CloudFrontOriginFacingPrefixListId
+      # Omitting SecurityGroupEgress preserves AWS default outbound access.
+      Tags:
+        - Key: Name
+          Value: bankofcli-app-sg
+
+  DatabaseSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupName: bankofcli-db-sg
+      GroupDescription: Allow PostgreSQL from the BankOfCLI application.
+      VpcId: !Ref VpcId
+      SecurityGroupIngress:
+        - Description: PostgreSQL from the application security group.
+          IpProtocol: tcp
+          FromPort: 5432
+          ToPort: 5432
+          SourceSecurityGroupId: !GetAtt ApplicationSecurityGroup.GroupId
+      Tags:
+        - Key: Name
+          Value: bankofcli-db-sg
+
+Outputs:
+  ApplicationSecurityGroupId:
+    Description: Attach this security group to the Beanstalk application instance.
+    Value: !GetAtt ApplicationSecurityGroup.GroupId
+
+  DatabaseSecurityGroupId:
+    Description: Attach this security group to the RDS database.
+    Value: !GetAtt DatabaseSecurityGroup.GroupId
