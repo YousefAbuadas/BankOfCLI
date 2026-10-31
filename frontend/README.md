@@ -18,8 +18,13 @@ another backend URL. Authentication and banking endpoints are called through
 ```sh
 npm run build
 npm run lint
+npm test
+npm run test:watch
 npm run preview
 ```
+
+Frontend tests use Jest with React Testing Library. Each test follows Arrange,
+Act, Assert sections and queries the UI by accessible roles and labels.
 
 ## Source structure
 
